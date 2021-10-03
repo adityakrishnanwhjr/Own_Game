@@ -1,7 +1,7 @@
 var ram, seetha, krishna, geetha, manoj, vishal, ankush, mangala, murthy;
 var ramImg, seethaImg, krishnaImg, geethaImg, manojImg, vishalImg, ankushImg, mangalaImg, murthyImg;
 var nextButton;
-var intro1, intro2, intro3, intro4, intro5, intro6, intro7, intro8, intro9;
+var intro1, intro2, intro3, intro4, intro5, intro6, intro7, intro8, intro9, gameIntro1;
 var INTRO1 = 1;
 var INTRO2 = 2;
 var INTRO3 = 3;
@@ -12,6 +12,7 @@ var INTRO7 = 7;
 var INTRO8 = 8;
 var INTRO9 = 9;
 var ENDINTRO = 10;
+var INSTRUCTION = 11;
 var gameState = INTRO1;
 
 function preload(){
@@ -38,6 +39,7 @@ function setup() {
   intro7 = new Intro7();
   intro8 = new Intro8();
   intro9 = new Intro9();
+  gameIntro1 = new gameIntro();
 }
 
 function draw() {
@@ -160,6 +162,18 @@ function draw() {
     });
   }
 
+  if(gameState === ENDINTRO){
+    ram = createSprite(400, 300, 50, 50);
+    ram.addImage(ramImg);
+    //ram.visible = true;
+    ram.scale=0.5;
+
+    nextButton.mousePressed(()=>{
+      ram.visible = false;
+      gameState = INSTRUCTION;
+    })
+  }
+
   intro1.display();
   intro2.display();
   intro3.display();
@@ -169,5 +183,6 @@ function draw() {
   intro7.display();
   intro8.display();
   intro9.display();
+  gameIntro1.display();
     
   }
