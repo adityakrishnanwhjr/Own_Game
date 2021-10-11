@@ -37,5 +37,13 @@ class gameIntro{
             this.text7.html("4. If you finish the 5th level, then game will be finished and you will be appreciated.");
             this.text7.position(10,115);
         }
+
+        if(gameState === LEVEL1){
+            this.text3.hide();
+            this.text4.hide();
+            this.text5.hide();
+            this.text6.hide();
+            this.text7.hide();
+        }
     }
 }

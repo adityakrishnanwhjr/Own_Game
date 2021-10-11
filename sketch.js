@@ -1,7 +1,13 @@
-var ram, seetha, krishna, geetha, manoj, vishal, ankush, mangala, murthy;
+const Engine = Matter.Engine;
+const World = Matter.World;
+const Bodies = Matter.Bodies;
+const Constraint = Matter.Constraint;
+
+var ram, seetha, krishna, geetha, manoj, vishal, ankush, mangala, murthy, bg, ball1;
 var ramImg, seethaImg, krishnaImg, geethaImg, manojImg, vishalImg, ankushImg, mangalaImg, murthyImg;
+var greenBg, greenGarden;
 var nextButton;
-var intro1, intro2, intro3, intro4, intro5, intro6, intro7, intro8, intro9, gameIntro1;
+var intro1, intro2, intro3, intro4, intro5, intro6, intro7, intro8, intro9, gameIntro1, l1;
 var INTRO1 = 1;
 var INTRO2 = 2;
 var INTRO3 = 3;
@@ -13,6 +19,7 @@ var INTRO8 = 8;
 var INTRO9 = 9;
 var ENDINTRO = 10;
 var INSTRUCTION = 11;
+var LEVEL1 = 12;
 var gameState = INTRO1;
 
 function preload(){
@@ -26,10 +33,14 @@ function preload(){
   mangalaImg=loadImage("Mangala.gif");
   murthyImg=loadImage("Murthy.gif");
   greenBg=loadImage("greenarybg.jpg");
+  greenGarden=loadImage("greengarden.jpg");
 }
 
 function setup() {
   createCanvas(800,400);
+  var engine = Engine.create();
+  world = engine.world;
+
   intro1 = new Intro1();
   intro2 = new Intro2();
   intro3 = new Intro3();
@@ -40,6 +51,8 @@ function setup() {
   intro8 = new Intro8();
   intro9 = new Intro9();
   gameIntro1 = new gameIntro();
+  l1 = new level1();
+  ball1 = new crumpledBall(400,100,10)
 }
 
 function draw() {
@@ -57,7 +70,10 @@ function draw() {
     ram.scale=0.5;
 
      nextButton.mousePressed(()=>{
-       ram.visible = false;
+       //ram.visible = false;
+       bg = createSprite(800,400,400,200)
+       bg.addImage(greenBg);
+       bg.scale = 2.7;
        gameState = INTRO2;
     });
 
@@ -68,11 +84,14 @@ function draw() {
     ram.visible=false;
     seetha = createSprite(400,250,50,50);
     seetha.addImage(seethaImg);
-    seetha.visible = true;
+    //seetha.visible = true;
     seetha.scale=0.5;
 
     nextButton.mousePressed(()=>{
-      seetha.visible = false;
+      //seetha.visible = false;
+      bg = createSprite(800,400,400,200)
+      bg.addImage(greenBg);
+      bg.scale = 2.7;
       gameState = INTRO3;
     });
   }
@@ -81,11 +100,14 @@ function draw() {
 
     krishna = createSprite(400,250,50,50);
     krishna.addImage(krishnaImg);
-    krishna.visible = true;
+    //krishna.visible = true;
     krishna.scale=0.5;
 
     nextButton.mousePressed(()=>{
-       krishna.visible = false;
+       //krishna.visible = false;
+       bg = createSprite(800,400,400,200)
+       bg.addImage(greenBg);
+       bg.scale = 2.7;
        gameState = INTRO4;
     });
   }
@@ -93,11 +115,14 @@ function draw() {
   if(gameState === INTRO4){
     geetha = createSprite(400,250,50,50);
     geetha.addImage(geethaImg);
-    geetha.visible = true;
+    //geetha.visible = true;
     geetha.scale=0.5;
 
     nextButton.mousePressed(()=>{
-        geetha.visible = false;
+        //geetha.visible = false;
+        bg = createSprite(800,400,400,200)
+        bg.addImage(greenBg);
+        bg.scale = 2.7;
         gameState = INTRO5;
     });
   }
@@ -105,11 +130,14 @@ function draw() {
   if(gameState === INTRO5){
     manoj = createSprite(400,250,50,50);
     manoj.addImage(manojImg);
-    manoj.visible = true;
+    //manoj.visible = true;
     manoj.scale=0.5;
 
     nextButton.mousePressed(()=>{
-        manoj.visible = false;
+        //manoj.visible = false;
+        bg = createSprite(800,400,400,200)
+        bg.addImage(greenBg);
+        bg.scale = 2.7;
         gameState = INTRO6;
     });
   }
@@ -117,11 +145,14 @@ function draw() {
   if(gameState === INTRO6){
     vishal = createSprite(400,250,50,50);
     vishal.addImage(vishalImg);
-    vishal.visible = true;
+    //vishal.visible = true;
     vishal.scale=0.5;
 
     nextButton.mousePressed(()=>{
-      vishal.visible = false;
+      //vishal.visible = false;
+      bg = createSprite(800,400,400,200)
+      bg.addImage(greenBg);
+      bg.scale = 2.7;
       gameState = INTRO7;
     });
   }
@@ -129,11 +160,14 @@ function draw() {
   if(gameState === INTRO7){
     ankush = createSprite(400,250,50,50);
     ankush.addImage(ankushImg);
-    ankush.visible = true;
+    //ankush.visible = true;
     ankush.scale=0.5;
 
     nextButton.mousePressed(()=>{
-      ankush.visible = false;
+      //ankush.visible = false;
+      bg = createSprite(800,400,400,200)
+      bg.addImage(greenBg);
+      bg.scale = 2.7;
       gameState = INTRO8;
     })
   }
@@ -141,11 +175,14 @@ function draw() {
   if(gameState === INTRO8){
     mangala = createSprite(400,250,50,50);
     mangala.addImage(mangalaImg);
-    mangala.visible = true;
+    //mangala.visible = true;
     mangala.scale=0.5;
 
     nextButton.mousePressed(()=>{
-      mangala.visible = false;
+      //mangala.visible = false;
+      bg = createSprite(800,400,400,200)
+      bg.addImage(greenBg);
+      bg.scale = 2.7;
       gameState = INTRO9
     });
   }
@@ -153,11 +190,14 @@ function draw() {
   if(gameState === INTRO9){
     murthy = createSprite(400,250,50,50);
     murthy.addImage(murthyImg);
-    murthy.visible = true;
+    //murthy.visible = true;
     murthy.scale=0.5;
 
     nextButton.mousePressed(()=>{
-      murthy.visible = false;
+      //murthy.visible = false;
+      bg = createSprite(800,400,400,200)
+      bg.addImage(greenBg);
+      bg.scale = 2.7;
       gameState = ENDINTRO;
     });
   }
@@ -169,8 +209,28 @@ function draw() {
     ram.scale=0.5;
 
     nextButton.mousePressed(()=>{
-      ram.visible = false;
+      //ram.visible = false;
+      bg = createSprite(800,400,400,200)
+      bg.addImage(greenBg);
+      bg.scale = 2.7;
       gameState = INSTRUCTION;
+    });
+  }
+
+  if(gameState === INSTRUCTION){
+      nextButton.mousePressed(()=>{
+        gameState = LEVEL1;
+      });
+  }
+  if(gameState === LEVEL1){
+      bg = createSprite(400,200,500,250)
+      bg.addImage(greenGarden);
+      bg.scale = 1.25;
+
+      nextButton.mousePressed(()=>{
+        l1.text1.hide();
+
+        ball1.display();
     })
   }
 
@@ -184,5 +244,6 @@ function draw() {
   intro8.display();
   intro9.display();
   gameIntro1.display();
+  l1.display();
     
   }
