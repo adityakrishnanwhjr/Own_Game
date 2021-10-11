@@ -7,6 +7,11 @@ class level1{
         if(gameState === LEVEL1){
             this.text1.html("LEVEL1");
             this.text1.position(400,200);
+
+            nextButton.mousePressed(()=>{
+                this.text1.hide();
+                ball1.display();
+            })
         }
     }
 }

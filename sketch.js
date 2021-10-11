@@ -226,13 +226,7 @@ function draw() {
       bg = createSprite(400,200,500,250)
       bg.addImage(greenGarden);
       bg.scale = 1.25;
-
-      nextButton.mousePressed(()=>{
-        l1.text1.hide();
-
-        ball1.display();
-    })
-  }
+    }
 
   intro1.display();
   intro2.display();
