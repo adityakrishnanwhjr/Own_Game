@@ -3,10 +3,12 @@ const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Constraint = Matter.Constraint;
 
-var ram, seetha, krishna, geetha, manoj, vishal, ankush, mangala, murthy, bg, ball1;
-var ramImg, seethaImg, krishnaImg, geethaImg, manojImg, vishalImg, ankushImg, mangalaImg, murthyImg;
+var ram, seetha, krishna, geetha, manoj, vishal, ankush, mangala, murthy, bg, ball1, ball2, ball3, ball4, ball5, ball6, ball7, ball8, ball9, ball10, dustbin1, ground1;
+var ramImg, seethaImg, krishnaImg, geethaImg, manojImg, vishalImg, ankushImg, mangalaImg, level1Img;
 var greenBg, greenGarden;
+var winningSound;
 var nextButton;
+var score = 0;
 var intro1, intro2, intro3, intro4, intro5, intro6, intro7, intro8, intro9, gameIntro1, l1;
 var INTRO1 = 1;
 var INTRO2 = 2;
@@ -20,6 +22,7 @@ var INTRO9 = 9;
 var ENDINTRO = 10;
 var INSTRUCTION = 11;
 var LEVEL1 = 12;
+var LEVEL1PLAY = 13;
 var gameState = INTRO1;
 
 function preload(){
@@ -34,6 +37,7 @@ function preload(){
   murthyImg=loadImage("Murthy.gif");
   greenBg=loadImage("greenarybg.jpg");
   greenGarden=loadImage("greengarden.jpg");
+  winningSound=loadSound("winningSound.mp3");
 }
 
 function setup() {
@@ -52,7 +56,22 @@ function setup() {
   intro9 = new Intro9();
   gameIntro1 = new gameIntro();
   l1 = new level1();
-  ball1 = new crumpledBall(400,100,10)
+
+  ball1 = new crumpledBall(random(100,150),0,30);
+  ball2 = new crumpledBall(random(100,150),0,30);
+  ball3 = new crumpledBall(random(100,150),0,30);
+  ball4 = new crumpledBall(random(100,150),0,30);
+  ball5 = new crumpledBall(random(100,150),0,30);
+  ball6 = new crumpledBall(random(100,150),0,30);
+  ball7 = new crumpledBall(random(100,150),0,30);
+  ball8 = new crumpledBall(random(100,150),0,30);
+  ball9 = new crumpledBall(random(100,150),0,30);
+  ball10 = new crumpledBall(random(100,150),0,30);
+
+  dustbin1 = new dustbin(700,375); 
+  ground1 = new ground(400,405,3200,10);
+
+  Engine.run(engine);  
 }
 
 function draw() {
@@ -222,11 +241,156 @@ function draw() {
         gameState = LEVEL1;
       });
   }
+
   if(gameState === LEVEL1){
       bg = createSprite(400,200,500,250)
       bg.addImage(greenGarden);
       bg.scale = 1.25;
     }
+
+  if(gameState === LEVEL1PLAY){
+    ball1.display();
+    ball2.display();
+    ball3.display();
+    ball4.display();
+    ball5.display();
+    ball6.display();
+    ball7.display();
+    ball8.display();
+    ball9.display();
+    ball10.display();
+    dustbin1.display();
+
+    textSize=35;
+    text("Score: " + score, 650,25);
+
+    if(score === 0){
+      level1Img = createSprite(100,300);
+      level1Img.addAnimation("normal", vishalImg);
+      level1Img.scale = 0.5
+    }
+
+    if(keyCode === 32 && score === 0){
+      Matter.Body.setPosition(ball1.body,{x:200, y:400});
+    }
+
+    if(gameState === LEVEL1PLAY && score === 0 && ball1.body.position.x > 540 && ball1.body.position.x < 610){
+      score = score+1;
+    }
+
+    if(score === 1){
+      level1Img.addAnimation("normal",ankushImg);
+    }
+
+    if(keyCode === 32 && score === 1){
+      Matter.Body.setPosition(ball2.body,{x:200, y:400});
+    }
+
+    if(gameState === LEVEL1PLAY && score === 1 && ball2.body.position.x > 540 && ball2.body.position.x < 610){
+      score = score+1;
+    }
+
+    if(score === 2){
+      level1Img.addAnimation("normal",mangalaImg);
+    }
+
+    if(keyCode === 32 && score === 2){
+      Matter.Body.setPosition(ball3.body,{x:200, y:400});
+    }
+
+    if(gameState === LEVEL1PLAY && score === 2 && ball3.body.position.x > 540 && ball3.body.position.x < 610){
+      score = score+1;
+    }
+
+    if(score === 3){
+      level1Img.addAnimation("normal", vishalImg);
+    }
+
+    if(keyCode === 32 && score === 3){
+      Matter.Body.setPosition(ball4.body,{x:200, y:400});
+    }
+
+    if(gameState === LEVEL1PLAY && score === 3 && ball4.body.position.x > 540 && ball4.body.position.x < 610){
+      score = score+1;
+    }
+
+    if(score === 4){
+      level1Img.addAnimation("normal",ankushImg);
+    }
+
+    if(keyCode === 32 && score === 4){
+      Matter.Body.setPosition(ball5.body,{x:200, y:400});
+    }
+
+    if(gameState === LEVEL1PLAY && score === 4 && ball5.body.position.x > 540 && ball5.body.position.x < 610){
+      score = score+1;
+    }
+
+    if(score === 5){
+      level1Img.addAnimation("normal",mangalaImg);
+    }
+
+    if(keyCode === 32 && score === 5){
+      Matter.Body.setPosition(ball6.body,{x:200, y:400});
+    }
+
+    if(gameState === LEVEL1PLAY && score === 5 && ball6.body.position.x > 540 && ball5.body.position.x < 610){
+      score = score+1;
+    }
+
+    if(score === 6){
+      level1Img.addAnimation("normal",vishalImg);
+    }
+
+    if(keyCode === 32 && score === 6){
+      Matter.Body.setPosition(ball7.body,{x:200, y:400});
+    }
+
+    if(gameState === LEVEL1PLAY && score === 6 && ball7.body.position.x > 540 && ball7.body.position.x < 610){
+      score = score+1;
+    }
+
+    if(score === 7){
+      level1Img.addAnimation("normal",ankushImg);
+    }
+
+    if(keyCode === 32 && score === 7){
+      Matter.Body.setPosition(ball8.body,{x:200, y:400});
+    }
+
+    if(gameState === LEVEL1PLAY && score === 7 && ball8.body.position.x > 540 && ball8.body.position.x < 610){
+      score = score+1;
+    }
+
+    if(score === 8){
+      level1Img.addAnimation("normal",mangalaImg);
+    }
+
+    if(keyCode === 32 && score === 8){
+      Matter.Body.setPosition(ball9.body,{x:200, y:400});
+    }
+
+    if(gameState === LEVEL1PLAY && score === 8 && ball9.body.position.x > 540 && ball9.body.position.x < 610){
+      score = score+1;
+    }
+
+    if(score === 9){
+      level1Img.addAnimation("normal",vishalImg);
+    }
+
+    if(keyCode === 32 && score === 9){
+      Matter.Body.setPosition(ball10.body,{x:200, y:400});
+    }
+
+    if(gameState === LEVEL1PLAY && score === 9 && ball10.body.position.x > 540 && ball10.body.position.x < 610){
+      score = score+1;
+    }
+
+    if(score === 10){
+      winningSound.play();
+    }
+  
+  }
 
   intro1.display();
   intro2.display();
@@ -239,5 +403,48 @@ function draw() {
   intro9.display();
   gameIntro1.display();
   l1.display();
-    
+  ground1.display();
+
+}
+
+function keyPressed(){
+  if(gameState === LEVEL1PLAY && keyCode === UP_ARROW && score === 0){
+    Matter.Body.applyForce(ball1.body, ball1.body.position, {x:100, y:-100});
   }
+
+  if(gameState === LEVEL1PLAY && keyCode === UP_ARROW && score === 1){
+    Matter.Body.applyForce(ball2.body, ball2.body.position, {x:100, y:-100});
+  }
+
+  if(gameState === LEVEL1PLAY && keyCode === UP_ARROW && score === 2){
+    Matter.Body.applyForce(ball3.body, ball3.body.position, {x:100, y:-100});
+  }
+
+  if(gameState === LEVEL1PLAY && keyCode === UP_ARROW && score === 3){
+    Matter.Body.applyForce(ball4.body, ball4.body.position, {x:100, y:-100});
+  }
+
+  if(gameState === LEVEL1PLAY && keyCode === UP_ARROW && score === 4){
+    Matter.Body.applyForce(ball5.body, ball5.body.position, {x:100, y:-100});
+  }
+
+  if(gameState === LEVEL1PLAY && keyCode === UP_ARROW && score === 5){
+    Matter.Body.applyForce(ball6.body, ball6.body.position, {x:100, y:-100});
+  }
+
+  if(gameState === LEVEL1PLAY && keyCode === UP_ARROW && score === 6){
+    Matter.Body.applyForce(ball7.body, ball7.body.position, {x:100, y:-100});
+  }
+
+  if(gameState === LEVEL1PLAY && keyCode === UP_ARROW && score === 7){
+    Matter.Body.applyForce(ball8.body, ball8.body.position, {x:100, y:-100});
+  }
+
+  if(gameState === LEVEL1PLAY && keyCode === UP_ARROW && score === 8){
+    Matter.Body.applyForce(ball9.body, ball9.body.position, {x:100, y:-100});
+  }
+
+  if(gameState === LEVEL1PLAY && keyCode === UP_ARROW && score === 9){
+    Matter.Body.applyForce(ball10.body, ball10.body.position, {x:100, y:-100});
+  }
+}
