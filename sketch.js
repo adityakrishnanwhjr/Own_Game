@@ -3,13 +3,14 @@ const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Constraint = Matter.Constraint;
 
-var ram, seetha, krishna, geetha, manoj, vishal, ankush, mangala, murthy, bg, ball1, ball2, ball3, ball4, ball5, ball6, ball7, ball8, ball9, ball10, dustbin1, ground1;
-var ramImg, seethaImg, krishnaImg, geethaImg, manojImg, vishalImg, ankushImg, mangalaImg, level1Img;
+var ram, seetha, krishna, geetha, manoj, vishal, ankush, mangala, murthy, bg, ball1, ball2, ball3, ball4, ball5, ball6, ball7, ball8, ball9, ball10, dustbin1, ground1, tree1, tree2, tree3, tree4, tree5, tree6, tree7, tree8, tree9, tree10;
+var ramImg, seethaImg, krishnaImg, geethaImg, manojImg, vishalImg, ankushImg, mangalaImg, level1Img, treeImg;
 var greenBg, greenGarden;
 var winningSound;
-var nextButton;
+var nextButton, plantTrees;
 var score = 0;
-var intro1, intro2, intro3, intro4, intro5, intro6, intro7, intro8, intro9, gameIntro1, l1;
+var treeScore = 0;
+var intro1, intro2, intro3, intro4, intro5, intro6, intro7, intro8, intro9, gameIntro1, l1, l2;
 var INTRO1 = 1;
 var INTRO2 = 2;
 var INTRO3 = 3;
@@ -23,6 +24,8 @@ var ENDINTRO = 10;
 var INSTRUCTION = 11;
 var LEVEL1 = 12;
 var LEVEL1PLAY = 13;
+var LEVEL2 = 14;
+var LEVEL2PLAY = 15;
 var gameState = INTRO1;
 
 function preload(){
@@ -37,6 +40,7 @@ function preload(){
   murthyImg=loadImage("Murthy.gif");
   greenBg=loadImage("greenarybg.jpg");
   greenGarden=loadImage("greengarden.jpg");
+  treeImg=loadImage("tree.gif");
   winningSound=loadSound("winningSound.mp3");
 }
 
@@ -56,6 +60,7 @@ function setup() {
   intro9 = new Intro9();
   gameIntro1 = new gameIntro();
   l1 = new level1();
+  l2 = new level2();
 
   ball1 = new crumpledBall(random(100,150),0,30);
   ball2 = new crumpledBall(random(100,150),0,30);
@@ -388,9 +393,34 @@ function draw() {
 
     if(score === 10){
       winningSound.play();
+      bg = createSprite(400,200,500,250)
+      bg.addImage(greenGarden);
+      bg.scale = 1.25;
+
+      nextButton.mousePressed(()=>{
+        gameState = LEVEL2;
+      });
     }
   
   }
+
+  if(gameState === LEVEL2){
+      //plantTrees = createButton("Plant Trees");
+      //plantTrees.position(650,10);
+      text("Score : " + treeScore, 550,25);
+
+     //plantTrees.mousePressed(()=>{
+      //tree1 = createSprite(random(100,700),random(225,400),70,100);
+      //tree1.addImage(treeImg);
+      //tree1.scale = 0.5;
+      //treeScore = treeScore + 5; 
+    //})
+
+    if(treeScore > 49){
+      winningSound.play();
+    } 
+  }
+
 
   intro1.display();
   intro2.display();
@@ -404,6 +434,7 @@ function draw() {
   gameIntro1.display();
   l1.display();
   ground1.display();
+  l2.display();
 
 }
 

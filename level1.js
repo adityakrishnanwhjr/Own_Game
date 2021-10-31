@@ -47,5 +47,9 @@ class level1{
             this.text7.html("LEVEL COMPLETED");
             this.text7.position(300,200);
         }
+
+        if(gameState === LEVEL2){
+            this.text7.hide();
+        }
     }
 }
