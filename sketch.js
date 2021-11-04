@@ -10,7 +10,7 @@ var winningSound;
 var nextButton, plantTrees;
 var score = 0;
 var treeScore = 0;
-var intro1, intro2, intro3, intro4, intro5, intro6, intro7, intro8, intro9, gameIntro1, l1, l2;
+var intro1, intro2, intro3, intro4, intro5, intro6, intro7, intro8, intro9, gameIntro1, l1, l2, l3;
 var INTRO1 = 1;
 var INTRO2 = 2;
 var INTRO3 = 3;
@@ -25,7 +25,7 @@ var INSTRUCTION = 11;
 var LEVEL1 = 12;
 var LEVEL1PLAY = 13;
 var LEVEL2 = 14;
-var LEVEL2PLAY = 15;
+var LEVEL3 = 15;
 var gameState = INTRO1;
 
 function preload(){
@@ -61,6 +61,7 @@ function setup() {
   gameIntro1 = new gameIntro();
   l1 = new level1();
   l2 = new level2();
+  l3 = new level3();
 
   ball1 = new crumpledBall(random(100,150),0,30);
   ball2 = new crumpledBall(random(100,150),0,30);
@@ -417,7 +418,9 @@ function draw() {
     //})
 
     if(treeScore > 49){
-      winningSound.play();
+      nextButton.mousePressed(()=>{
+        gameState = LEVEL3;
+      })
     } 
   }
 

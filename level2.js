@@ -53,5 +53,9 @@ class level2{
                 this.text8.position(300,200);
             }
         }
+
+        if(gameState === LEVEL3){
+            this.text8.hide();
+        }
     }
 }
