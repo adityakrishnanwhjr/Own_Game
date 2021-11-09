@@ -281,7 +281,8 @@ function draw() {
     }
 
     if(gameState === LEVEL1PLAY && score === 0 && ball1.body.position.x > 540 && ball1.body.position.x < 610){
-      score = score+1;
+      Matter.Body.setPosition(ball1.body,{x:575, y:400});
+      score = 1;
     }
 
     if(score === 1){
@@ -293,7 +294,8 @@ function draw() {
     }
 
     if(gameState === LEVEL1PLAY && score === 1 && ball2.body.position.x > 540 && ball2.body.position.x < 610){
-      score = score+1;
+      Matter.Body.setPosition(ball2.body,{x:575, y:400});
+      score = 2;
     }
 
     if(score === 2){
@@ -305,7 +307,8 @@ function draw() {
     }
 
     if(gameState === LEVEL1PLAY && score === 2 && ball3.body.position.x > 540 && ball3.body.position.x < 610){
-      score = score+1;
+      Matter.Body.setPosition(ball3.body,{x:575, y:400});
+      score = 3;
     }
 
     if(score === 3){
@@ -317,7 +320,8 @@ function draw() {
     }
 
     if(gameState === LEVEL1PLAY && score === 3 && ball4.body.position.x > 540 && ball4.body.position.x < 610){
-      score = score+1;
+      Matter.Body.setPosition(ball4.body,{x:575, y:400});
+      score = 4;
     }
 
     if(score === 4){
@@ -329,7 +333,8 @@ function draw() {
     }
 
     if(gameState === LEVEL1PLAY && score === 4 && ball5.body.position.x > 540 && ball5.body.position.x < 610){
-      score = score+1;
+      Matter.Body.setPosition(ball5.body,{x:575, y:400});
+      score = 5;
     }
 
     if(score === 5){
@@ -341,7 +346,8 @@ function draw() {
     }
 
     if(gameState === LEVEL1PLAY && score === 5 && ball6.body.position.x > 540 && ball5.body.position.x < 610){
-      score = score+1;
+      Matter.Body.setPosition(ball6.body,{x:575, y:400});
+      score = 6;
     }
 
     if(score === 6){
@@ -353,7 +359,8 @@ function draw() {
     }
 
     if(gameState === LEVEL1PLAY && score === 6 && ball7.body.position.x > 540 && ball7.body.position.x < 610){
-      score = score+1;
+      Matter.Body.setPosition(ball7.body,{x:575, y:400});
+      score = 7;
     }
 
     if(score === 7){
@@ -365,7 +372,8 @@ function draw() {
     }
 
     if(gameState === LEVEL1PLAY && score === 7 && ball8.body.position.x > 540 && ball8.body.position.x < 610){
-      score = score+1;
+      Matter.Body.setPosition(ball8.body,{x:575, y:400});
+      score = 8;
     }
 
     if(score === 8){
@@ -377,7 +385,8 @@ function draw() {
     }
 
     if(gameState === LEVEL1PLAY && score === 8 && ball9.body.position.x > 540 && ball9.body.position.x < 610){
-      score = score+1;
+      Matter.Body.setPosition(ball9.body,{x:575, y:400});
+      score = 9;
     }
 
     if(score === 9){
@@ -389,7 +398,8 @@ function draw() {
     }
 
     if(gameState === LEVEL1PLAY && score === 9 && ball10.body.position.x > 540 && ball10.body.position.x < 610){
-      score = score+1;
+      Matter.Body.setPosition(ball10.body,{x:575, y:400});
+      score = 10;
     }
 
     if(score === 10){
@@ -401,6 +411,46 @@ function draw() {
       nextButton.mousePressed(()=>{
         gameState = LEVEL2;
       });
+    }
+
+    if(score === 0 && ball1.body.position.x < 540 && ball1.body.position.x > 610){
+      score = 0;
+    }
+
+    if(score === 1 && ball2.body.position.x < 540 && ball2.body.position.x > 610){
+      score = 1;
+    }
+
+    if(score === 2 && ball3.body.position.x < 540 && ball3.body.position.x > 610){
+      score = 2;
+    }
+
+    if(score === 3 && ball4.body.position.x < 540 && ball4.body.position.x > 610){
+      score = 3;
+    }
+
+    if(score === 4 && ball5.body.position.x < 540 && ball5.body.position.x > 610){
+      score = 4;
+    }
+
+    if(score === 5 && ball6.body.position.x < 540 && ball6.body.position.x > 610){
+      score = 5;
+    }
+
+    if(score === 6 && ball7.body.position.x < 540 && ball7.body.position.x > 610){
+      score = 6;
+    }
+
+    if(score === 7 && ball8.body.position.x < 540 && ball8.body.position.x > 610){
+      score = 7
+    }
+
+    if(score === 8 && ball9.body.position.x < 540 && ball9.body.position.x > 610){
+      score = 8;
+    }
+
+    if(score === 9 && ball10.body.position.x < 540 && ball10.body.position.x > 610){
+      score = 9;
     }
   
   }
