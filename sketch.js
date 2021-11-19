@@ -3,13 +3,14 @@ const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Constraint = Matter.Constraint;
 
-var ram, seetha, krishna, geetha, manoj, vishal, ankush, mangala, murthy, bg, ball1, ball2, ball3, ball4, ball5, ball6, ball7, ball8, ball9, ball10, dustbin1, ground1, tree1, tree2, tree3, tree4, tree5, tree6, tree7, tree8, tree9, tree10;
-var ramImg, seethaImg, krishnaImg, geethaImg, manojImg, vishalImg, ankushImg, mangalaImg, level1Img, treeImg;
+var ram, seetha, krishna, geetha, manoj, vishal, ankush, mangala, murthy, bg, ball1, ball2, ball3, ball4, ball5, ball6, ball7, ball8, ball9, ball10, dustbin1, ground1, tree1, tree2, tree3, tree4, tree5, tree6, tree7, tree8, tree9, tree10, level3Img;
+var ramImg, seethaImg, krishnaImg, geethaImg, manojImg, vishalImg, ankushImg, mangalaImg, level1Img, treeImg, fruitPeelImg, plasticCanImg, paperImg, plasticBag, juteBag;
 var greenBg, greenGarden;
 var winningSound;
 var nextButton, plantTrees;
 var score = 0;
 var treeScore = 0;
+var level3Score = 0;
 var intro1, intro2, intro3, intro4, intro5, intro6, intro7, intro8, intro9, gameIntro1, l1, l2, l3;
 var INTRO1 = 1;
 var INTRO2 = 2;
@@ -25,7 +26,9 @@ var INSTRUCTION = 11;
 var LEVEL1 = 12;
 var LEVEL1PLAY = 13;
 var LEVEL2 = 14;
-var LEVEL3 = 15;
+var LEVEL2PLAY = 15;
+var LEVEL3 = 16;
+var LEVEL3PLAY = 17;
 var gameState = INTRO1;
 
 function preload(){
@@ -41,6 +44,11 @@ function preload(){
   greenBg=loadImage("greenarybg.jpg");
   greenGarden=loadImage("greengarden.jpg");
   treeImg=loadImage("tree.gif");
+  fruitPeelImg=loadImage("bananaPeel.png");
+  plasticCanImg=loadImage("plasticCan.jpg");
+  paperImg=loadImage("paper.png");
+  plasticBag=loadImage("plasticBag.jpeg");
+  juteBag=loadImage("juteBag.jpg");
   winningSound=loadSound("winningSound.mp3");
 }
 
@@ -455,7 +463,7 @@ function draw() {
   
   }
 
-  if(gameState === LEVEL2){
+  if(gameState === LEVEL2PLAY){
       //plantTrees = createButton("Plant Trees");
       //plantTrees.position(650,10);
       text("Score : " + treeScore, 550,25);
@@ -467,11 +475,21 @@ function draw() {
       //treeScore = treeScore + 5; 
     //})
 
-    if(treeScore > 49){
+    if(treeScore === 50){
       nextButton.mousePressed(()=>{
         gameState = LEVEL3;
-      })
+      });
     } 
+  }
+
+  if(gameState === LEVEL3){
+    bg = createSprite(400,200,500,250);
+    bg.addImage(greenGarden);
+    bg.scale = 1.25;
+  }
+
+  if(gameState === LEVEL3PLAY){
+    text("Score : " + level3Score,550,25);
   }
 
 
@@ -488,6 +506,7 @@ function draw() {
   l1.display();
   ground1.display();
   l2.display();
+  l3.display();
 
 }
 

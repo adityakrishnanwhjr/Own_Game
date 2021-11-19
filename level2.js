@@ -27,7 +27,6 @@ class level2{
             this.text6.position(10,200);
             this.text7.html("2. For each tree 5 points will be awarded. If you score 50 points, this level be completed.")
             this.text7.position(10,225);
-            this.plantTrees.position(650,10);
 
             nextButton.mousePressed(()=>{
                 this.text1.hide();
@@ -37,7 +36,12 @@ class level2{
                 this.text5.hide();
                 this.text6.hide();
                 this.text7.hide();
+                gameState = LEVEL2PLAY; 
             });
+        }
+
+        if(gameState === LEVEL2PLAY){
+            this.plantTrees.position(650,10);
 
             this.plantTrees.mousePressed(()=>{
                 tree1 = createSprite(random(100,700),random(225,400),70,100);
@@ -46,11 +50,11 @@ class level2{
                 treeScore = treeScore + 5; 
               })
 
-            if(treeScore > 49){
+            if(treeScore === 50){
                 this.plantTrees.hide();
-
                 this.text8.html("LEVEL COMPLETED");
                 this.text8.position(300,200);
+                winningSound.play();
             }
         }
 
