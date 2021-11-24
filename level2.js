@@ -42,7 +42,15 @@ class level2{
 
         if(gameState === LEVEL2PLAY){
             this.plantTrees.position(650,10);
+            seetha = createSprite(200,250,50,50);
+            seetha.addImage(seethaImg);
+            //seetha.visible = true;
+            seetha.scale=0.5;
 
+            krishna = createSprite(150,250,50,50);
+            krishna.addImage(krishnaImg);
+            krishna.scale=0.5;
+        
             this.plantTrees.mousePressed(()=>{
                 tree1 = createSprite(random(100,700),random(225,400),70,100);
                 tree1.addImage(treeImg);
@@ -50,7 +58,7 @@ class level2{
                 treeScore = treeScore + 5; 
               })
 
-            if(treeScore === 50){
+            if(treeScore > 49){
                 this.plantTrees.hide();
                 this.text8.html("LEVEL COMPLETED");
                 this.text8.position(300,200);

@@ -3,8 +3,8 @@ const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Constraint = Matter.Constraint;
 
-var ram, seetha, krishna, geetha, manoj, vishal, ankush, mangala, murthy, bg, ball1, ball2, ball3, ball4, ball5, ball6, ball7, ball8, ball9, ball10, dustbin1, ground1, tree1, tree2, tree3, tree4, tree5, tree6, tree7, tree8, tree9, tree10, level3Img;
-var ramImg, seethaImg, krishnaImg, geethaImg, manojImg, vishalImg, ankushImg, mangalaImg, level1Img, treeImg, fruitPeelImg, plasticCanImg, paperImg, plasticBag, juteBag;
+var ram, seetha, krishna, geetha, manoj, vishal, ankush, mangala, murthy, bg, ball1, ball2, ball3, ball4, ball5, ball6, ball7, ball8, ball9, ball10, dustbin1, ground1, tree1, tree2, tree3, tree4, tree5, tree6, tree7, tree8, tree9, tree10, level3Img, tips;
+var ramImg, seethaImg, krishnaImg, geethaImg, manojImg, vishalImg, ankushImg, mangalaImg, level1Img, treeImg, fruitPeelImg, plasticCanImg, paperImg, plasticBag, juteBag, tipsImg;
 var greenBg, greenGarden;
 var winningSound;
 var nextButton, plantTrees;
@@ -29,6 +29,11 @@ var LEVEL2 = 14;
 var LEVEL2PLAY = 15;
 var LEVEL3 = 16;
 var LEVEL3PLAY = 17;
+var ASKINGNAME = 18;
+var ASKINGNAMEEND = 19;
+var TIPS = 20;
+var TIPS2 = 21;
+var THANKYOU = 22;
 var gameState = INTRO1;
 
 function preload(){
@@ -49,6 +54,7 @@ function preload(){
   paperImg=loadImage("paper.png");
   plasticBag=loadImage("plasticBag.jpeg");
   juteBag=loadImage("juteBag.jpg");
+  tipsImg=loadImage("tips.jpeg")
   winningSound=loadSound("winningSound.mp3");
 }
 
@@ -216,7 +222,7 @@ function draw() {
       bg = createSprite(800,400,400,200)
       bg.addImage(greenBg);
       bg.scale = 2.7;
-      gameState = INTRO9
+      gameState = INTRO9;
     });
   }
 
@@ -475,7 +481,7 @@ function draw() {
       //treeScore = treeScore + 5; 
     //})
 
-    if(treeScore === 50){
+    if(treeScore > 49){
       nextButton.mousePressed(()=>{
         gameState = LEVEL3;
       });

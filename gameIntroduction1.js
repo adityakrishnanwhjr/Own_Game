@@ -25,7 +25,7 @@ class gameIntro{
             this.text3.html("Game Instructions");
             this.text3.position(400,15);
 
-            this.text4.html("1. This game totally contains 5 levels.");
+            this.text4.html("1. This game totally contains 3 levels.");
             this.text4.position(10,40);
 
             this.text5.html("2. Each level has a specific target. If you reach the target, you will reach the next level.");

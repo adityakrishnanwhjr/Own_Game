@@ -24,8 +24,13 @@ class level3{
         this.text22 = createElement("h3");
         this.text23 = createElement("h3");
         this.text24 = createElement("h1");
+        this.text25 = createElement("h3");
+        this.text26 = createElement("h3");
+        this.text27 = createElement("h3");
+        this.text28 = createElement("h1");
         this.biodegradable = createButton("Biodegradable");
         this.nonbiodegradable = createButton("Non Biodegradable");
+        this.input = createInput("Name");
     }
 
     display(){
@@ -102,7 +107,7 @@ class level3{
                     level3Score = 1;
                     this.text14.hide();
                     this.text15.hide();
-                    bg = createSprite(400,200,500,250);
+                    bg = createSprite(400,200,displayWidth,displayHeight);
                     bg.addImage(greenGarden);
                     bg.scale = 1.25;
                 })
@@ -125,7 +130,7 @@ class level3{
                     level3Score = 2;
                     this.text16.hide();
                     this.text17.hide();
-                    bg = createSprite(400,200,500,250);
+                    bg = createSprite(400,200,displayWidth,displayHeight);
                     bg.addImage(greenGarden);
                     bg.scale = 1.25;
                 })
@@ -148,7 +153,7 @@ class level3{
                     level3Score = 3;
                     this.text18.hide();
                     this.text19.hide();
-                    bg = createSprite(400,200,500,250);
+                    bg = createSprite(400,200,displayWidth,displayHeight);
                     bg.addImage(greenGarden);
                     bg.scale = 1.25;
                 })
@@ -161,7 +166,7 @@ class level3{
             }
 
             if(level3Score === 3){
-                level3Img=createSprite(400,100,50,50);
+                level3Img=createSprite(400,100,displayWidth,displayHeight);
                 level3Img.addImage(plasticBag);
                 level3Img.scale = 0.5;
                 this.text20.html("Plastic bag");
@@ -194,7 +199,7 @@ class level3{
                     level3Score = 5;
                     this.text22.hide();
                     this.text23.hide();
-                    bg = createSprite(400,200,500,250);
+                    bg = createSprite(400,200,displayWidth,displayHeight);
                     bg.addImage(greenGarden);
                     bg.scale = 1.25;
                 })
@@ -212,7 +217,63 @@ class level3{
                 this.text24.html("LEVEL COMPLETED");
                 this.text24.position(300,200);
                 winningSound.play();
+                nextButton.mousePressed(()=>{
+                    this.text24.hide();
+                    gameState = ASKINGNAME;
+                })
             }
+        }
+
+        if(gameState === ASKINGNAME){
+            this.text25.html("What is your name?");
+            this.text25.position(350,150);
+            this.input.position(350,200);
+
+            this.name = this.input.value();
+
+            nextButton.mousePressed(()=>{
+                this.text25.hide();
+                this.input.hide();
+                winningSound.play();
+                this.text26.html("Congratulations " + this.name);
+                this.text26.position(300,200);
+                gameState = ASKINGNAMEEND;
+            })
+        }
+
+        if(gameState === ASKINGNAMEEND){
+            nextButton.mousePressed(()=>{
+                this.text26.hide();
+                gameState = TIPS;
+            })
+        }
+
+        if(gameState === TIPS){
+            this.text27.html("Some Tips for Eco friendly Environment");
+            this.text27.position(300,200);
+
+            nextButton.mousePressed(()=>{
+                this.text27.hide();
+                gameState = TIPS2;
+            })
+        }
+
+        if(gameState === TIPS2){
+            tips = createSprite(400,200,50,50);
+            tips.addImage(tipsImg);
+            tips.scale = 0.4;
+
+            nextButton.mousePressed(()=>{
+                gameState = THANKYOU;
+            })
+        }
+
+        if(gameState === THANKYOU){
+            bg=createSprite(400,200,500,250);
+            bg.addImage(greenGarden);
+            bg.scale=1.25;
+            this.text28.html("THANK YOU!");
+            this.text28.position(350,200);
         }
     }
 }
