@@ -3,7 +3,7 @@ const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Constraint = Matter.Constraint;
 
-var ram, seetha, krishna, geetha, manoj, vishal, ankush, mangala, murthy, bg, ball1, ball2, ball3, ball4, ball5, ball6, ball7, ball8, ball9, ball10, dustbin1, ground1, tree1, tree2, tree3, tree4, tree5, tree6, tree7, tree8, tree9, tree10, level3Img, tips;
+var ram, seetha, krishna, geetha, manoj, vishal, ankush, mangala, murthy, bg, ball1, ball2, ball3, ball4, ball5, ball11, ball7, ball8, ball9, ball10, dustbin1, ground1, tree1, tree2, tree3, tree4, tree5, tree6, tree7, tree8, tree9, tree10, level3Img, tips;
 var ramImg, seethaImg, krishnaImg, geethaImg, manojImg, vishalImg, ankushImg, mangalaImg, level1Img, treeImg, fruitPeelImg, plasticCanImg, paperImg, plasticBag, juteBag, tipsImg;
 var greenBg, greenGarden;
 var winningSound;
@@ -82,7 +82,7 @@ function setup() {
   ball3 = new crumpledBall(random(100,150),0,30);
   ball4 = new crumpledBall(random(100,150),0,30);
   ball5 = new crumpledBall(random(100,150),0,30);
-  ball6 = new crumpledBall(random(100,150),0,30);
+  ball11 = new crumpledBall(random(100,150),0,30);
   ball7 = new crumpledBall(random(100,150),0,30);
   ball8 = new crumpledBall(random(100,150),0,30);
   ball9 = new crumpledBall(random(100,150),0,30);
@@ -274,7 +274,7 @@ function draw() {
     ball3.display();
     ball4.display();
     ball5.display();
-    ball6.display();
+    ball11.display();
     ball7.display();
     ball8.display();
     ball9.display();
@@ -356,11 +356,11 @@ function draw() {
     }
 
     if(keyCode === 32 && score === 5){
-      Matter.Body.setPosition(ball6.body,{x:200, y:400});
+      Matter.Body.setPosition(ball11.body,{x:200, y:400});
     }
 
-    if(gameState === LEVEL1PLAY && score === 5 && ball6.body.position.x > 540 && ball5.body.position.x < 610){
-      Matter.Body.setPosition(ball6.body,{x:575, y:400});
+    if(gameState === LEVEL1PLAY && score === 5 && ball11.body.position.x > 540 && ball5.body.position.x < 610){
+      Matter.Body.setPosition(ball11.body,{x:575, y:400});
       score = 6;
     }
 
@@ -447,7 +447,7 @@ function draw() {
       score = 4;
     }
 
-    if(score === 5 && ball6.body.position.x < 540 && ball6.body.position.x > 610){
+    if(score === 5 && ball11.body.position.x < 540 && ball11.body.position.x > 610){
       score = 5;
     }
 
@@ -538,7 +538,7 @@ function keyPressed(){
   }
 
   if(gameState === LEVEL1PLAY && keyCode === UP_ARROW && score === 5){
-    Matter.Body.applyForce(ball6.body, ball6.body.position, {x:100, y:-100});
+    Matter.Body.applyForce(ball11.body, ball11.body.position, {x:100, y:-100});
   }
 
   if(gameState === LEVEL1PLAY && keyCode === UP_ARROW && score === 6){
