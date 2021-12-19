@@ -427,43 +427,43 @@ function draw() {
       });
     }
 
-    if(score === 0 && ball1.body.position.x < 540 && ball1.body.position.x > 610){
+    if(score === 0 && ball1.body.position.x === 575){
       score = 0;
     }
 
-    if(score === 1 && ball2.body.position.x < 540 && ball2.body.position.x > 610){
+    if(score === 1 && ball2.body.position.x === 575){
       score = 1;
     }
 
-    if(score === 2 && ball3.body.position.x < 540 && ball3.body.position.x > 610){
+    if(score === 2 && ball3.body.position.x === 575){
       score = 2;
     }
 
-    if(score === 3 && ball4.body.position.x < 540 && ball4.body.position.x > 610){
+    if(score === 3 && ball4.body.position.x === 575){
       score = 3;
     }
 
-    if(score === 4 && ball5.body.position.x < 540 && ball5.body.position.x > 610){
+    if(score === 4 && ball5.body.position.x === 575){
       score = 4;
     }
 
-    if(score === 5 && ball11.body.position.x < 540 && ball11.body.position.x > 610){
+    if(score === 5 && ball11.body.position.x === 575){
       score = 5;
     }
 
-    if(score === 6 && ball7.body.position.x < 540 && ball7.body.position.x > 610){
+    if(score === 6 && ball7.body.position.x === 575){
       score = 6;
     }
 
-    if(score === 7 && ball8.body.position.x < 540 && ball8.body.position.x > 610){
+    if(score === 7 && ball8.body.position.x === 575){
       score = 7
     }
 
-    if(score === 8 && ball9.body.position.x < 540 && ball9.body.position.x > 610){
+    if(score === 8 && ball9.body.position.x === 575){
       score = 8;
     }
 
-    if(score === 9 && ball10.body.position.x < 540 && ball10.body.position.x > 610){
+    if(score === 9 && ball10.body.position.x === 575){
       score = 9;
     }
   
