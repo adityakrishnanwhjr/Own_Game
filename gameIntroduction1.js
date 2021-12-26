@@ -13,9 +13,11 @@ class gameIntro{
         if(gameState === ENDINTRO){
           this.text1.html("These are my lovely family members and neighbours. My family members and neighbours");
           this.text1.position(10,25);
+          this.text1.style('color:white')
 
           this.text2.html("are going to help me to clean my house and environment.");
           this.text2.position(10,50);
+          this.text2.style('color:white');
         }
         
         if(gameState === INSTRUCTION){
@@ -24,18 +26,23 @@ class gameIntro{
 
             this.text3.html("Game Instructions");
             this.text3.position(400,15);
+            this.text3.style('color:white');
 
             this.text4.html("1. This game totally contains 3 levels.");
             this.text4.position(10,40);
+            this.text4.style('color:white');
 
             this.text5.html("2. Each level has a specific target. If you reach the target, you will reach the next level.");
             this.text5.position(10,65);
+            this.text5.style('color:white');
 
             this.text6.html("3. This game has a scoring system for each level. So you can keep a check on your score.");
             this.text6.position(10,90);
+            this.text6.style('color:white');
 
             this.text7.html("4. If you finish the 5th level, then game will be finished and you will be appreciated.");
             this.text7.position(10,115);
+            this.text7.style('color:white');
         }
 
         if(gameState === LEVEL1){

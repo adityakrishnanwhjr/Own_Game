@@ -7,6 +7,7 @@ class Intro5{
         if(gameState === INTRO5){
             this.text1.html("Hi this is Ram's uncle Manoj. He will also help Ram to save this beautiful environment.");
             this.text1.position(10,25);
+            this.text1.style('color:white');
         }
 
         if(gameState === INTRO6){

@@ -7,6 +7,7 @@ class Intro9{
         if(gameState === INTRO9){
              this.text1.html("Hi this is Ram's neighbour Murthy. He also helps Ram to save this beautiful environment");
              this.text1.position(10,25);
+             this.text1.style('color:white');
         }
 
         if(gameState === ENDINTRO){
